@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>🐱</title>
+
+<!-- DOODLE + SOFT FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body{
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:'Quicksand',sans-serif;
+
+  /* BACKGROUND IMAGE */
+  background:
+    linear-gradient(rgba(214,230,255,.85), rgba(255,248,235,.9)),
+    url("bg.jpg") center/cover no-repeat;
+}
+
+/* CARD */
+.box{
+  background:#fff8ec;
+  width:340px;
+  padding:32px;
+  border-radius:35px;
+  text-align:center;
+  box-shadow:0 20px 35px rgba(0,0,0,.15);
+  animation:fadePop .7s ease;
+}
+
+/* DOODLE TITLE */
+h2{
+  font-family:'Patrick Hand',cursive;
+  color:#4d96ff;
+  font-size:1.6rem;
+  margin-bottom:10px;
+}
+
+/* TEXT */
+p{
+  color:#555;
+  line-height:1.4;
+}
+
+/* INPUT */
+input{
+  padding:10px;
+  width:80%;
+  border-radius:20px;
+  border:2px dashed #9bbcff;
+  outline:none;
+  background:#fff;
+}
+
+/* BUTTON */
+button{
+  margin:10px;
+  padding:10px 24px;
+  border-radius:30px;
+  border:2px solid #9bbcff;
+  background:#fff;
+  font-weight:600;
+  cursor:pointer;
+  transition:.3s;
+}
+
+button:hover{
+  background:#9bbcff;
+  color:white;
+  transform:scale(1.08) rotate(-2deg);
+}
+
+/* ERROR */
+.error{
+  color:#ff6b6b;
+  font-family:'Patrick Hand';
+}
+
+/* CAT */
+.cat{
+  width:90px;
+  margin-top:15px;
+  animation:bounce 2s infinite;
+}
+
+.hidden{display:none;}
+
+@keyframes fadePop{
+  from{opacity:0;transform:scale(.75) rotate(-2deg);}
+  to{opacity:1;transform:scale(1);}
+}
+
+@keyframes bounce{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-18px);}
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="box" id="p1">
+  <h2>siapakah gerangan saudara ?</h2>
+  <p><i>hint: your nickname</i></p>
+  <input id="name">
+  <br>
+  <button onclick="check()">enter</button>
+  <p class="error" id="err"></p>
+</div>
+
+<!-- PAGE 2 -->
+<div class="box hidden" id="p2">
+  <h2>comfirm eh jemomol?</h2>
+  <button onclick="yesPath()">yee</button>
+  <button onclick="noPath()">tak</button>
+</div>
+
+<!-- YES FLOW -->
+<div class="box hidden" id="p2a">
+  <h2>real no fake ah ni 😭</h2>
+  <button onclick="finalConfirm()">yaa pahtu hat mana lagi</button>
+</div>
+
+<!-- NO FLOW -->
+<div class="box hidden" id="p2b">
+  <h2>uish agak laen… srs eh tak 🤨</h2>
+  <button onclick="noPath2()">takdelah tipu je</button>
+</div>
+
+<div class="box hidden" id="p2c">
+  <h2>so mmg ajmal haikal ah ni 👀</h2>
+  <button onclick="finalConfirm()">ya allah yee</button>
+</div>
+
+<!-- FINAL CONFIRM -->
+<div class="box hidden" id="p3">
+  <h2>ok ok… comfirm la ni Ajmal Haikal?</h2>
+  <button onclick="birthday()">YESSSSS 💗</button>
+</div>
+
+<!-- BIRTHDAY -->
+<div class="box hidden" id="p4">
+  <h2>9th January 00:00 🎂</h2>
+  <p>
+   Happy birthday to the person that I love the most , the introverted boy, the silent one who carries a lot of burdens in his heart, which I wish I could take away if I could. My only wish for you is to be happy, always. The 19th phase won’t be easy so do take care of yourself . Make many memories, but most importantly, be gentle with yourself every day. I hope you’ll find your peace, a place where you can finally be yourself. It’s okay to cry, to express emotions, and to be vulnerable. Remember, life is not about being strong all the time. You’ve been suffering enough , why not celebrate today and be proud of everything you’ve been through all these years? I may not know you fully, but I’ll make sure you feel loved and understood as long as I’m able to. Good luck on your journey, Ajmal. Promise me to live your life to the fullest.
+speaking from the heart , hana munchkin .
+  </p>
+  <img src="pic.png" class="cat">
+  <audio id="song" src="aboutyou.mp3"></audio>
+</div>
+
+<script>
+function check(){
+  let n=document.getElementById("name").value.toLowerCase();
+  if(n==="jemomol"){
+    p1.classList.add("hidden");
+    p2.classList.remove("hidden");
+  }else{
+    err.innerText="welkkkk salah takle masuk";
+  }
+}
+
+function yesPath(){
+  p2.classList.add("hidden");
+  p2a.classList.remove("hidden");
+}
+
+function noPath(){
+  p2.classList.add("hidden");
+  p2b.classList.remove("hidden");
+}
+
+function noPath2(){
+  p2b.classList.add("hidden");
+  p2c.classList.remove("hidden");
+}
+
+function finalConfirm(){
+  p2a.classList.add("hidden");
+  p2c.classList.add("hidden");
+  p3.classList.remove("hidden");
+}
+
+function birthday(){
+  p3.classList.add("hidden");
+  p4.classList.remove("hidden");
+  document.getElementById("song").volume = 0.6;
+  document.getElementById("song").play();
+}
+</script>
+
+</body>
+</html> 
